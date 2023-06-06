@@ -30,7 +30,9 @@ class M_Admin extends CI_Model
         $this->db->select('pelanggan.nama, sensor.*');
         $this->db->from('pelanggan');
         $this->db->join('sensor', 'pelanggan.pelanggan_id = sensor.pelanggan_id', 'inner');
+
         $this->db->where('pelanggan.pelanggan_id', $key);
+        $this->db->where('YEAR(sensor.tanggal)', date('Y'));
 
         return $this->db->get()->result();
     }
