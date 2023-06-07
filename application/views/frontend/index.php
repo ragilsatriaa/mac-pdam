@@ -56,7 +56,7 @@
                 <ul>
                     <li><a href="#home" class="active">Home</a></li>
                     <li><a href="#pricing">Informasi</a></li>
-                    <li><a class="get-a-quote" href="<?= base_url('auth'); ?>">Login</a></li>
+                    <li><a class="get-a-quote" href="<?= base_url('auth'); ?>">Login Admin</a></li>
                 </ul>
             </nav><!-- .navbar -->
 

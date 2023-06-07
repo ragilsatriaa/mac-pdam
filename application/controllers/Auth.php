@@ -8,7 +8,7 @@ class Auth extends CI_Controller
         parent::__construct();
         if (!empty($this->session->userdata('log_admin'))) {
             if ($this->uri->segment(2) != 'logout') {
-                $this->session->set_flashdata('notif-error', 'Anda sudah login !');
+                $this->session->set_flashdata('toastr-error', 'Anda sudah login !');
                 redirect('admin');
             }
         }
@@ -19,6 +19,7 @@ class Auth extends CI_Controller
     {
         $data = [
             'title'     => 'Login',
+            'page'      => 'auth/login'
         ];
 
         $this->load->view('auth/index', $data);
@@ -31,7 +32,7 @@ class Auth extends CI_Controller
 
 
         if ($this->form_validation->run() == FALSE) {
-            $this->session->set_flashdata('toastr-eror', validation_errors());
+            $this->session->set_flashdata('toastr-error', validation_errors());
             redirect('auth');
         } else {
             # code...
@@ -41,11 +42,14 @@ class Auth extends CI_Controller
             $user = $this->login->cek($username, $password);
 
             if ($user == 'admin') {
-                $this->session->set_flashdata('toastr-sukses', 'Login berhasil');
-                redirect('admin');
+                $this->session->set_flashdata('toastr-success', 'Login berhasil');
+                redirect('admin', 'refresh');
             } else {
-                $this->session->set_flashdata('toastr-eror', $user);
-                redirect('auth');
+                $this->session->set_flashdata('msg-error', '<div class="alert alert-danger fade in">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                ' . $user . '
+                </div>');
+                redirect('auth', 'refresh');
             }
         }
     }
@@ -53,6 +57,7 @@ class Auth extends CI_Controller
     public function logout()
     {
         $this->session->sess_destroy($this->session->userdata('log_admin'));
+        $this->session->set_flashdata('toastr-success', 'Logout berhasil');
         redirect('auth', 'refresh');
     }
 }

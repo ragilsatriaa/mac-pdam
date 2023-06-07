@@ -63,7 +63,7 @@ class Monitoring extends CI_Controller
 
         $pdf->SetFont('Times', 'B', 12);
         $pdf->Cell(30, 8, '', 0, 0);
-        $pdf->Cell(130, 8, 'BUKTI TAGIHAN PEMBAYARAN REKENING AIR', 0, 1, 'C');
+        $pdf->Cell(130, 8, 'LAPORAN PENGGUNAAN METERAN AIR CERDAS', 0, 1, 'C');
 
         $pdf->Ln(10);
 
@@ -74,32 +74,26 @@ class Monitoring extends CI_Controller
 
         $pdf->Ln(4);
 
-        $pdf->Cell(30, 10, 'Bulan', 0, 0);
-        $pdf->Cell(5, 10, ':', 0, 0, 'C');
-        $pdf->Cell(50, 10, date('F Y', strtotime($data->tanggal)), 0, 1);
-        
-        $pdf->Ln(4);
-
         $pdf->Cell(30, 10, 'Nama', 0, 0);
         $pdf->Cell(5, 10, ':', 0, 0, 'C');
         $pdf->Cell(50, 10, $data->nama, 0, 1);
 
         $pdf->Ln(4);
 
-        $pdf->Cell(30, 10, 'Kubik', 0, 0);
+        $pdf->Cell(30, 10, 'Total Penggunaan', 0, 0);
         $pdf->Cell(5, 10, ':', 0, 0, 'C');
-        $pdf->Cell(50, 10, $data->kubik, 0, 1);
+        $pdf->Cell(50, 10, $data->kubik . ' m3', 0, 1);
 
         $pdf->Ln(4);
 
-        $pdf->Cell(30, 10, 'Biaya', 0, 0);
+        $pdf->Cell(30, 10, 'Total Biaya', 0, 0);
         $pdf->Cell(5, 10, ':', 0, 0, 'C');
         $pdf->Cell(50, 10, 'Rp. ' . number_format($data->totalBiaya, 0, ',', '.'), 0, 1);
 
         $pdf->Ln(10);
 
         $pdf->Cell(100, 10, '', 0, 0);
-        $pdf->Cell(20, 10, 'KANTOR PDAM KOTA TEGAL 2023', 0, 1);
+        $pdf->Cell(20, 10, 'PDAM KABUPATEN TEGAL', 0, 1);
 
         $pdf->Output('E_Struk.pdf', 'I');
     }

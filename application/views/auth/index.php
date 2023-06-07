@@ -18,47 +18,11 @@
     <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/toastr/toastr.min.css">
 </head>
 
-<body class="hold-transition login-page bg-primary">
+<body class="hold-transition login-page">
     <div class="toastr-success" data-flashdata="<?= $this->session->flashdata('toastr-success'); ?>"></div>
     <div class="toastr-error" data-flashdata="<?= $this->session->flashdata('toastr-error'); ?>"></div>
 
-    <div class="login-box">
-        <!-- /.login-logo -->
-        <div class="card card-outline card-primary">
-            <div class="card-header text-center">
-                <h4 class="text-dark">Form Login</h4>
-            </div>
-            <div class="card-body">
-                <form action="<?= base_url('auth/proses'); ?>" method="post">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="username" placeholder="username...">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-user"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" name="password" placeholder="password...">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                </form>
-                <hr>
-            </div>
-            <!-- /.card-body -->
-        </div>
-        <!-- /.card -->
-    </div>
+    <?php $this->load->view($page); ?>
     <!-- /.login-box -->
 
     <!-- jQuery -->
