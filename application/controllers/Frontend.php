@@ -47,16 +47,16 @@ class Frontend extends CI_Controller
 
         $pdf->Ln(10);
 
+        $pdf->Cell(30, 10, 'Bulan', 0, 0);
+        $pdf->Cell(5, 10, ':', 0, 0, 'C');
+        $pdf->Cell(50, 10, date('F Y', strtotime($data->tanggal)), 0, 1);
+
+        $pdf->Ln(4);
+
         $pdf->SetFont('Times', '', 12);
         $pdf->Cell(30, 10, 'ID Pelanggan', 0, 0);
         $pdf->Cell(5, 10, ':', 0, 0, 'C');
         $pdf->Cell(50, 10, $data->pelanggan_id, 0, 1);
-
-        $pdf->Ln(4);
-
-        $pdf->Cell(30, 10, 'Bulan', 0, 0);
-        $pdf->Cell(5, 10, ':', 0, 0, 'C');
-        $pdf->Cell(50, 10, date('F Y', strtotime($data->tanggal)), 0, 1);
 
         $pdf->Ln(4);
 

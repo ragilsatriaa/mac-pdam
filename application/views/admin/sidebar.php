@@ -2,7 +2,7 @@
  <aside class="main-sidebar sidebar-light-primary elevation-1">
      <!-- Brand Logo -->
      <a href="<?= base_url('admin'); ?>" class="brand-link text-center">
-         <span class="brand-text font-weight-bold"><i class="fas fa-water"></i> MONITORING PDAM</span>
+         <span class="brand-text font-weight-bold"><i class="fas fa-water"></i> METERAN AIR CERDAS</span>
      </a>
 
      <!-- Sidebar -->
