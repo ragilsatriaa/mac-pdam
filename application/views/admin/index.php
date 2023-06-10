@@ -84,7 +84,7 @@
 
         <!-- Main Footer -->
         <footer class="main-footer">
-            <strong>Copyright &copy; Monitoring PDAM </strong>
+            <strong>Copyright &copy; MAC </strong>
         </footer>
     </div>
     <!-- ./wrapper -->
