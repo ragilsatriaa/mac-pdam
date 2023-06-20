@@ -39,6 +39,7 @@
                                             <th>Alamat</th>
                                             <th>Kran</th>
                                             <th>Action</th>
+                                            <th>Selenoid</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -72,9 +73,16 @@
                                                             <a class="dropdown-item edit_btn" href="#" data-toggle="modal" data-target="#editPelanggan" data-id="<?= $data->id; ?>" data-pelanggan_id="<?= $data->pelanggan_id; ?>" data-nama="<?= $data->nama; ?>" data-alamat="<?= $data->alamat; ?>">edit</a>
 
                                                             <a class="dropdown-item" href="<?= base_url('pelanggan/delete/' . $data->id); ?>" onclick="return confirm('Apakah yakin data pelanggan akan dihapus?')">delete</a>
-
-                                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleSelenoid<?= $data->id; ?>">kran</a>
                                                         </div>
+                                                    </div>
+                                                <td>
+                                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                                        <label class="btn btn-primary">
+                                                            <input type="radio" name="selenoid" value="1" id="on" data-id="<?= $data->id; ?>"> ON
+                                                        </label>
+                                                        <label class="btn btn-danger">
+                                                            <input type="radio" name="selenoid" value="0" id="off" data-id="<?= $data->id; ?>"> OFF
+                                                        </label>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -179,41 +187,6 @@
     </div>
 </div>
 
-<!-- Modal -->
-<?php foreach ($pelanggan as $data) : ?>
-    <div class="modal fade" id="exampleSelenoid<?= $data->id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="<?= base_url('pelanggan/editSelenoid'); ?>" method="post">
-                        <input type="hidden" value="<?= $data->id; ?>" name="id">
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="pelanggan_id" value="<?= $data->pelanggan_id; ?>" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Pilih status</label>
-                            <select class="form-control" id="exampleFormControlSelect1" name="selenoid">
-                                <option value="0" <?= ($data->selenoid == 0) ? 'selected' : '' ?>>OFF</option>
-                                <option value="1" <?= ($data->selenoid == 1) ? 'selected' : '' ?>>ON</option>
-                            </select>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save changes</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-<?php endforeach; ?>
-
 <script>
     let edit_btn = $('.edit_btn');
 
@@ -230,4 +203,22 @@
             $('#alamat').val(alamat);
         });
     });
+
+    $('#on').click(function() {
+        const id = $(this).data('id');
+        const selenoid = $(this).val();
+
+        handleSelenoid(id, selenoid);
+    });
+
+    $('#off').click(function() {
+        const id = $(this).data('id');
+        const selenoid = $(this).val();
+
+        handleSelenoid(id, selenoid);
+    });
+
+    function handleSelenoid(id, selenoid) {
+        document.location.href = `<?php echo base_url('pelanggan/editSelenoid/') ?>${id}/${selenoid}`;
+    }
 </script>

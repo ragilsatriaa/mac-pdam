@@ -74,7 +74,7 @@
                                                 <td><?= $dt->nama; ?></td>
                                                 <td><?= $dt->totalLitres; ?></td>
                                                 <td><?= $dt->kubik; ?></td>
-                                                <td>Rp. <?= number_format($dt->totalBiaya); ?></td>
+                                                <td>Rp. <?= number_format($dt->totalBiaya, 0, ',', '.'); ?></td>
                                                 <td>
                                                     <a href="<?= base_url('monitoring/cetak/' . $dt->id); ?>" class="btn btn-primary" target="_blank">Cetak</a>
                                                 </td>

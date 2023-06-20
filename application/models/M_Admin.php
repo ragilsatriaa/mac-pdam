@@ -3,24 +3,25 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_Admin extends CI_Model
 {
-
     public function getPelanggan()
     {
         return $this->db->get('pelanggan')->result();
     }
 
-    public function getMonitoring($tahun, $bulan)
+    public function getMonitoring($tahun = null, $bulan = null)
     {
         $this->db->select('pelanggan.nama, sensor.*');
         $this->db->from('pelanggan');
         $this->db->join('sensor', 'pelanggan.pelanggan_id = sensor.pelanggan_id', 'inner');
 
-        $this->db->group_start();
-        $this->db->where('YEAR(tanggal)', $tahun);
-        $this->db->where('MONTH(tanggal)', $bulan);
-        $this->db->group_end();
+        if ($tahun && $bulan) {
+            $this->db->group_start();
+            $this->db->where('YEAR(tanggal)', $tahun);
+            $this->db->where('MONTH(tanggal)', $bulan);
+            $this->db->group_end();
+        }
 
-        $this->db->order_by('pelanggan.nama', 'asc');
+        $this->db->order_by('sensor.tanggal, pelanggan.nama', 'asc');
 
         return $this->db->get()->result();
     }

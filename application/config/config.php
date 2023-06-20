@@ -23,8 +23,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/pdam/';
-
+//$config['base_url'] = 'http://mac-pdam.online';
+//$config['base_url'] = 'http://localhost/pdam/';
+$config['base_url'] = 'http://mac.phbcomputerc.my.id';
 /*
 |--------------------------------------------------------------------------
 | Index File

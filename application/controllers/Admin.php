@@ -52,10 +52,18 @@ class Admin extends CI_Controller
 
     public function getRealtime()
     {
-        $data = $this->db->get('pelanggan')->num_rows();
+        $pelanggan = $this->db->get('pelanggan')->num_rows();
+
+        $this->db->select('SUM(kubik) as totalAir');
+        $kubik = $this->db->get('sensor')->row();
+
+        $this->db->where('selenoid', 0);
+        $pelangganOff = $this->db->get('pelanggan')->num_rows();
 
         echo json_encode([
-            'data'  => $data
+            'totalPelanggan'    => $pelanggan,
+            'totalAir'          => round($kubik->totalAir, 2),
+            'totalPelangganOff' => $pelangganOff
         ]);
     }
 }

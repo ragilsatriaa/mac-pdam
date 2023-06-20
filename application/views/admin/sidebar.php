@@ -55,6 +55,14 @@
                          </p>
                      </a>
                  </li>
+                 <li class="nav-item">
+                     <a href="<?= base_url('rekap'); ?>" class="nav-link <?= ($this->uri->segment(1) == 'rekap' ? 'active' : ''); ?>">
+                         <i class="nav-icon fas fa-book"></i>
+                         <p>
+                             Rekap
+                         </p>
+                     </a>
+                 </li>
              </ul>
          </nav>
          <!-- /.sidebar-menu -->

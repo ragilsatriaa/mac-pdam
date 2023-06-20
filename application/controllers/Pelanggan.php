@@ -83,21 +83,21 @@ class Pelanggan extends CI_Controller
         }
     }
 
-    public function editSelenoid()
+    public function editSelenoid($id, $selenoid)
     {
         $data = [
-            'selenoid'  => $this->input->post('selenoid')
+            'selenoid'  => $selenoid
         ];
 
-        $this->db->where('id', $this->input->post('id'));
+        $this->db->where('id', $id);
         $update = $this->db->update('pelanggan', $data);
 
         if ($update) {
             $this->session->set_flashdata('toastr-success', 'Kran berhasil diupdate!');
-            redirect('pelanggan');
+            redirect('pelanggan', 'refresh');
         } else {
             $this->session->set_flashdata('toastr-success', 'Kran gagal diupdate!');
-            redirect('pelanggan');
+            redirect('pelanggan', 'refresh');
         }
     }
 }
