@@ -78,10 +78,10 @@
                                                 <td>
                                                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                                         <label class="btn btn-primary">
-                                                            <input type="radio" name="selenoid" value="1" id="on" data-id="<?= $data->id; ?>"> ON
+                                                            <input type="radio" name="selenoid" value="1" class="on" data-id="<?= $data->id; ?>"> ON
                                                         </label>
                                                         <label class="btn btn-danger">
-                                                            <input type="radio" name="selenoid" value="0" id="off" data-id="<?= $data->id; ?>"> OFF
+                                                            <input type="radio" name="selenoid" value="0" class="off" data-id="<?= $data->id; ?>"> OFF
                                                         </label>
                                                     </div>
                                                 </td>
@@ -204,14 +204,14 @@
         });
     });
 
-    $('#on').click(function() {
+    $('.on').click(function() {
         const id = $(this).data('id');
         const selenoid = $(this).val();
 
         handleSelenoid(id, selenoid);
     });
 
-    $('#off').click(function() {
+    $('.off').click(function() {
         const id = $(this).data('id');
         const selenoid = $(this).val();
 
